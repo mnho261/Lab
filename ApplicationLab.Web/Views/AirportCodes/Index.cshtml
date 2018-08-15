@@ -1,0 +1,108 @@
+﻿@model ApplicationLab.Web.ViewModels.AirportCodeIndexData
+@using PagedList;
+@using PagedList.Mvc
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h3>Airport IATA Codes</h3>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+@using (Html.BeginForm("Index", "AirportCodes", FormMethod.Get))
+{
+    <div class="row">
+        <div class="col-md-2">
+            @Html.DropDownList("FilterOption", Model.ListSearchCriteria, htmlAttributes: new { @class = "form-control col-md-4 input-sm"})
+        </div>
+        <div class="col-md-4">
+            @Html.TextBox("SearchString", (string)ViewBag.CurrentFilter, htmlAttributes: new { @class = "form-control col-md-4 input-sm"})
+        </div>
+        <div class="col-md-2">
+            <input type="submit" value="Search" class="btn btn-default btn-sm" />
+        </div>
+    </div>
+}
+<br/>
+<table class="table table-AS-striped table-AS-hover table-condensed">
+    <tr>
+        <th>
+            @Html.ActionLink("IATACode", "Index", new { sortBy = "IATACode", sortOrder = ViewBag.sortOrder, currentFilter = ViewBag.CurrentFilter, filterOption = ViewBag.CurrentFilterOption, sortActive = "1", pSport = ViewBag.pSort, Page = ViewBag.pageNumber })
+        </th>
+        <th>
+            @Html.ActionLink("Airport Name", "Index", new { sortBy = "AirportName", sortOrder = ViewBag.sortOrder, currentFilter = ViewBag.CurrentFilter, filterOption = ViewBag.CurrentFilterOption, sortActive = "1", pSport = ViewBag.pSort, Page = ViewBag.pageNumber })
+        </th>
+        <th>
+            @Html.ActionLink("City", "Index", new { sortBy = "City", sortOrder = ViewBag.sortOrder, currentFilter = ViewBag.CurrentFilter, filterOption = ViewBag.CurrentFilterOption, sortActive = "1", pSport = ViewBag.pSort, Page = ViewBag.pageNumber })
+        </th>
+        <th>
+            @Html.ActionLink("Country", "Index", new { sortBy = "Country", sortOrder = ViewBag.sortOrder, currentFilter = ViewBag.CurrentFilter, filterOption = ViewBag.CurrentFilterOption, sortActive = "1", pSport = ViewBag.pSort, Page = ViewBag.pageNumber })
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model.ListAirportCode)
+{
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.IATACode)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.AirportName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.City)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Country)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id = item.AirportCodeID }) |
+            @Html.ActionLink("Details", "Details", new { id = item.AirportCodeID }) |
+            @Html.ActionLink("Delete", "Delete", new { id = item.AirportCodeID })
+        </td>
+    </tr>
+}
+
+</table>
+
+@Html.PagedListPager(Model.ListAirportCode, page => Url.Action("Index", new { page, filterOption = ViewBag.CurrentFilterOption, currentFilter = ViewBag.CurrentFilter, sortBy = ViewBag.sortBy, pagingSort = "1", pSort = ViewBag.pSort}))
+Page @(Model.ListAirportCode.PageCount < Model.ListAirportCode.PageNumber ? 0 : Model.ListAirportCode.PageNumber) of @Model.ListAirportCode.PageCount
+
+@section Scripts
+{
+    <link rel="stylesheet" href="~/Content/JQueryUI/jquery-ui.css" />
+    <script type="text/javascript" src="~/Scripts/jquery-1.12.4.js"></script>
+    <script type="text/javascript" src="~/Scripts/jquery-ui-1.12.1.js"></script>
+    <script>
+        var url = '@Url.RouteUrl("DefaultApi", new
+             {
+                 httproute = "", controller = "AirportCodesApi"
+             })';
+        $("#SearchString").autocomplete({
+            source: function (request, response) {
+                $.ajax({
+                    url: url,
+                    data: { filterOption: $("#FilterOption").val(), query: request.term,},
+                    datatype: 'json',
+                    type: 'GET',
+                    success: function (data) {
+                        response($.map(data, function (item) {
+                            return {
+                                label: item.SearchResult,
+                                value: item.Id
+                            }
+                        }));
+                    }
+
+                })
+            },
+
+            minlength: 1
+        });
+
+    </script>
+    }

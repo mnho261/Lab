@@ -1,0 +1,222 @@
+body {
+    background-image: none;
+    background-repeat: no-repeat;
+    color: #000;
+    margin: 0;
+    padding: 0;
+    text-align: left;
+    font-size: 1.5rem;
+    width: 100%;
+    outline: 0;
+    font-family: Circular, Arial, 'Helvetica Neue', Helvetica, sans-serif;
+}
+
+input[type="text"] {
+    font-size: 1.4rem;
+       /*text-align: center;*/
+}
+#flightInfo {
+    width: 45%;
+}
+
+#flightInfoDiv{
+    max-width: 20%;
+}
+
+.ASPageContainer {
+    width: 100%;
+}
+
+
+
+.ASHeader {
+    background: #01426A;
+    color: #FFF;
+    margin: 0 0 0 0;
+    background-image: url(../Images/nav-aura.png);
+    background-repeat: no-repeat;
+    background-position: top left;
+    font-family: Circular, Arial, 'Helvetica Neue', Helvetica, sans-serif;
+    font-size: 3rem;
+    font-weight: bold;
+    text-decoration: none;
+    outline: none;
+    padding: 24px 20px 20px 60px;
+    line-height: 1.25;
+}
+
+.ASTextInput {
+    max-width: 100px;
+}
+
+.ASDatePickerInput {
+    width: 167px;
+    align-self: center;
+}
+
+.ASbtnPrimary {
+    text-align: center;
+    text-transform: uppercase;
+    background: #48850b;
+    color: #fff;
+    border-color: #48850b;
+    border: 2px solid #48850b;
+    padding: 8px 40px;
+    min-width: 186px;
+    border-radius: 4px;
+}
+
+.ASbtnPrimary:hover {
+    text-align: center;
+    text-transform: uppercase;
+    background: #3b6d09;
+    color: #fff;
+    border-color: #3b6d09;
+    border: 2px solid #3b6d09;
+    padding: 8px 40px;
+    min-width: 186px;
+    border-radius: 4px;
+}
+
+.ASbtnSecondary {
+    text-align: center;
+    text-transform: uppercase;
+    padding: 8px 40px;
+    outline-color: white;
+    min-width: 100px;
+    background: #fff;
+    border: 2px solid #2774AE;
+    color: #2774AE;
+    border-radius: 4px;
+}
+
+.ASbtnSecondary:Hover {
+    text-align: center;
+    text-transform: uppercase;
+    padding: 8px 40px;
+    outline-color: white;
+    min-width: 100px;
+    background: #eee;
+    border: 2px solid #2774AE;
+    color: #2774AE;
+    border-radius: 4px;
+}
+
+.ASFooter {
+    background: #01426A;
+    color: #FFF;
+    margin: 0 0 0 0;
+    background-repeat: no-repeat;
+    background-position: top left;
+    font-family: Circular, Arial, 'Helvetica Neue', Helvetica, sans-serif;
+    font-size: 1rem;
+    font-weight: bold;
+    text-decoration: none;
+    outline: none;
+    padding: 24px 20px 20px 60px;
+    line-height: 1.25;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    text-align: center;
+    z-index: 2;
+}
+
+.glyphicon.fast-right-spinner {
+    -webkit-animation: glyphicon-spin-r 1s infinite linear;
+    animation: glyphicon-spin-r 1s infinite linear;
+}
+
+@-webkit-keyframes glyphicon-spin-r {
+    0% {
+        -webkit-transform: rotate(0deg);
+        transform: rotate(0deg);
+    }
+    100% {
+        -webkit-transform: rotate(359deg);
+        transform: rotate(359deg);
+    }
+}
+
+@keyframes glyphicon-spin-r {
+    0% {
+        -webkit-transform: rotate(0deg);
+        transform: rotate(0deg);
+    }
+    100% {
+        -webkit-transform: rotate(359deg);
+        transform: rotate(359deg);
+    }
+}
+
+@-webkit-keyframes glyphicon-spin-l {
+    0% {
+        -webkit-transform: rotate(359deg);
+        transform: rotate(359deg);
+    }
+    100% {
+        -webkit-transform: rotate(0deg);
+        transform: rotate(0deg);
+    }
+}
+
+@keyframes glyphicon-spin-l {
+    0% {
+        -webkit-transform: rotate(359deg);
+        transform: rotate(359deg);
+    }
+    100% {
+        -webkit-transform: rotate(0deg);
+        transform: rotate(0deg);
+    }
+}
+
+.VersionFooter {
+    font-size: 1rem;
+}
+
+.center-block {
+    align-items: center;
+    justify-content: center;
+    display: flex;
+}
+
+#BadFlightInfo {
+    display: none;
+}
+
+.row {
+    margin-left: 15px;
+    margin-right: 15px;
+}
+
+.container-fluid {
+    padding-right: 15px;
+    padding-left: 15px;
+    margin-right: auto;
+    margin-left: auto;
+}
+
+
+
+
+.dateWidthControl {
+    width: 250px;
+}
+
+#crewInfoNotice {
+    display: none;
+}
+
+.AlignInfoNotice {
+    padding-top: 40px;
+}
+
+#secureFlight {
+    width: 50vw;
+    height: 10vh;
+}
+
+#birthdateLabel {
+    color: #01426A;
+}
